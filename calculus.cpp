@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 
+// Term of a Polynomial Expression
 class Term
 {
 public:
@@ -38,6 +39,7 @@ public:
     }
     ~Term() {}
 
+    // Returns a new Term that is the Derivative of this Term
     Term derive_term()
     {
         Term derived_term;
@@ -46,6 +48,7 @@ public:
         return derived_term;
     }
 
+    // Returns a new Term that is the Integral of this Term
     Term integrate_term()
     {
         Term integrated_term;
@@ -215,7 +218,7 @@ int num_lines(std::string in_string)
 }
 
 // find longest line length in a string
-int longest_line_length_of(std::string input_string)
+auto longest_line_length_of(std::string input_string) -> int
 {
 
     int longest_line_length = 0;
@@ -226,7 +229,8 @@ int longest_line_length_of(std::string input_string)
         else
         {
     */
-    std::vector<std::string> lines = split_string_newline(input_string);
+    using str_vec = std::vector<std::string>;
+    str_vec lines = split_string_newline(input_string);
     longest_line_length = 0;
     for (int i = 0; i < lines.size(); i++)
     {
@@ -257,7 +261,7 @@ int longest_line_length_of(std::string input_string)
     return longest_line_length;
 }
 
-void print_enclosed_line_in_paragraph(std::string paragraph_string, std::string line_string)
+auto print_enclosed_line_in_paragraph(std::string paragraph_string, std::string line_string) -> void
 {
     std::cout << "┃" << line_string;
     for (int i = line_string.length(); i < longest_line_length_of(paragraph_string); i++)
@@ -268,7 +272,8 @@ void print_enclosed_line_in_paragraph(std::string paragraph_string, std::string 
 }
 
 // print box around a string
-void print_box_around_paragraph(std::string str)
+// void print_box_around_paragraph(std::string str)
+auto print_box_around_paragraph(std::string str) -> void
 {
     int str_length = str.length();
     int longest_line_length = longest_line_length_of(str);
@@ -330,6 +335,7 @@ int main(int argc, char *argv[])
             length++;
         }
     }
+
     int menu_box_length = longest_line_length_of(menu);
 
     // find number of lines in menu
